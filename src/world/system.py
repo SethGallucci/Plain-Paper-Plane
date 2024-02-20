@@ -95,10 +95,10 @@ class Parallax(System):
         base_image_size_horizontal, base_image_size_vertical = entity.base_image_size
 
         camera_displacement: Vector2 = self.camera.position - self.parallax_origin
-        parallax_shit_horizontal: float = (camera_displacement.x * parallax_factor_horizontal) % base_image_size_horizontal
-        parallax_shit_vertical: float = (camera_displacement.y * parallax_factor_vertical) % base_image_size_vertical
+        parallax_shift_horizontal: float = (camera_displacement.x * parallax_factor_horizontal) % base_image_size_horizontal
+        parallax_shift_vertical: float = (camera_displacement.y * parallax_factor_vertical) % base_image_size_vertical
 
-        entity.surface = entity.expanded_surface.subsurface(parallax_shit_horizontal, parallax_shit_vertical, *entity.subsurface_size)
+        entity.surface = entity.expanded_surface.subsurface(parallax_shift_horizontal, parallax_shift_vertical, *entity.subsurface_size)
 
 
 class VisualizePolygons(System):
