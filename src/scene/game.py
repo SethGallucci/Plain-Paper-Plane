@@ -15,7 +15,7 @@ from src.world.background import Background
 from src.world.camera import Camera
 from src.world.crate_wall import CrateWall
 from src.world.plane import Plane
-from src.world.system import DetectCollisions, Move, Parallax, Render, VisualizePolygons
+from src.world.system import DetectCollisions, Move, Parallax, Render
 from src.world.world import World
 
 
@@ -55,9 +55,6 @@ class Game(Scene):
             parallax_factor=(0.2, 0)
         )
         self.collision_detection_system = DetectCollisions()
-        self.polygon_visualization_system = VisualizePolygons(
-            camera=self.camera
-        )
 
         self.distance_for_next_wall = 0
         self.score = 0
@@ -141,7 +138,6 @@ class Game(Scene):
 
         self.parallax_system(self.world.query())
         self.render_system(self.world.query())
-        self.polygon_visualization_system(self.world.query())
 
         screen.blit(self.camera.surface, dest=(0, 0))
         screen.blit(self.score_surface, dest=(screen.get_width() / 2, 10))
