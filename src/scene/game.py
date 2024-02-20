@@ -141,6 +141,7 @@ class Game(Scene):
 
         self.parallax_system(self.world.query())
         self.render_system(self.world.query())
+        self.polygon_visualization_system(self.world.query())
 
         screen.blit(self.camera.surface, dest=(0, 0))
         screen.blit(self.score_surface, dest=(screen.get_width() / 2, 10))

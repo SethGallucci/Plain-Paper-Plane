@@ -146,12 +146,12 @@ class DetectCollisions(System):
         return tuple(filter(lambda test: len(test[2]) > 0, super().__call__(entities, **kwargs)))
 
     @staticmethod
-    def _check_polygon_collision(polygon_0: Polygon, polygon_1: Polygon):
+    def _check_polygon_collision(polygon_0: Polygon, polygon_1: Polygon) -> bool:
 
         # Separating Axis Theorem
         for normal in list(polygon_0.surface_normals()) + list(polygon_1.surface_normals()):
-            p0_projection = {vertex.dot(normal.normalize()) for vertex in polygon_0.vertices}
-            p1_projection = {vertex.dot(normal.normalize()) for vertex in polygon_1.vertices}
+            p0_projection = {vertex.dot(normal) for vertex in polygon_0.vertices}
+            p1_projection = {vertex.dot(normal) for vertex in polygon_1.vertices}
 
             projection_bounds = [
                 (min(p0_projection), 0),
