@@ -11,17 +11,17 @@ from src.scene.scene import Scene
 
 
 class GameOver(Scene):
-    def __init__(self, init_data: dict | None = None):
-        super().__init__(init_data=init_data)
+    def __init__(self, **init_data):
+        super().__init__(**init_data)
 
-        self.background: Surface = self.init_data["screenshot"].copy()
-        lighten = Surface(self.background.get_size()).convert_alpha()
+        self.background: Surface = init_data.get("screenshot").copy()
+        lighten = Surface(self.background.get_size())
         pg.draw.rect(lighten, Color(255, 255, 255, 127), lighten.get_rect())
         self.background.blit(lighten, (0, 0))
 
-        self.final_score_display = Font("freesansbold.ttf", 64).render(f"Score: {init_data['score']}", True, "black").convert_alpha()
+        self.final_score_display = Font("freesansbold.ttf", 64).render(f"Score: {init_data.get('score')}", True, "black")
 
-        self.replay_text = Font("freesansbold.ttf", 32).render("click to fly again", True, "black").convert_alpha()
+        self.replay_text = Font("freesansbold.ttf", 32).render("click to fly again", True, "black")
 
         self.scene_begin_time = pg.time.get_ticks()
         self.click_disable_duration = 1000

@@ -1,6 +1,6 @@
 import random
 
-from pygame import Surface, Vector2
+from pygame import SRCALPHA, Surface, Vector2
 from pygame.image import load
 
 from src.ecs.ecs import Entity
@@ -13,13 +13,13 @@ class CrateWall(Entity, Texture, PolygonCollider):
     def __init__(
         self,
         *,
-        position: Vector2,
+        position: float,
         render_height: int = 0,
         **kwargs
     ):
-        crate = load("res/crate.png").convert()
-        metal_frame = load("res/metal_frame.png").convert_alpha()
-        wall = Surface((crate.get_width(), crate.get_height() * 7)).convert_alpha()
+        crate = load("res/crate.png")
+        metal_frame = load("res/metal_frame.png")
+        wall = Surface((crate.get_width(), crate.get_height() * 7), flags=SRCALPHA)
         wall.fill((0, 0, 0, 0))
 
         crate_height = crate.get_height()
@@ -46,10 +46,12 @@ class CrateWall(Entity, Texture, PolygonCollider):
             Vector2(crate_width_half, -wall_height_half + crate_height * (metal_frame_location + 1))
         )
 
+        self.metal_frame_location = metal_frame_location
+
         super().__init__(
             surface=wall,
             anchor=Vector2(0, 0),
-            position=position,
+            position=Vector2(position, 0),
             render_height=render_height,
             rotation=0,
             polygons=[polygon_top, polygon_bottom],

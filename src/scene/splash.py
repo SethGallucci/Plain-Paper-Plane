@@ -13,12 +13,12 @@ from src.scene.scene import Scene
 
 class Splash(Scene):
 
-    def __init__(self, init_data: dict | None = None):
-        super().__init__(init_data=init_data)
+    def __init__(self, **init_data: dict):
+        super().__init__(**init_data)
 
         self.background_color = "white"
-        self.title_banner = Font("freesansbold.ttf", 128).render("Plain Paper Plane", True, "black").convert_alpha()
-        self.start_text = Font("freesansbold.ttf", 32).render("click to fly", True, "black").convert_alpha()
+        self.title_banner = Font("freesansbold.ttf", 128).render("Plain Paper Plane", True, "black")
+        self.start_text = Font("freesansbold.ttf", 32).render("click to fly", True, "black")
 
     def process_events(self, events: List[Event]) -> None:
         for event in events:

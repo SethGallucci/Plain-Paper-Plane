@@ -13,7 +13,7 @@ class Background(Entity, TileWrapTexture, Transform):
         render_height: int = 0,
         **kwargs
     ):
-        image: Surface = load("res/game_background.png").convert_alpha()
+        image: Surface = load("res/game_background.png")
         super().__init__(
             surface=image,
             subsurface_size=image.get_size(),

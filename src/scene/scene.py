@@ -13,9 +13,8 @@ class Scene(ABC):
     :param init_data: Optional data that will be passed into the scene.
     """
 
-    def __init__(self, init_data: dict | None = None):
+    def __init__(self, **init_data):
         self.next_scene: Scene | None = self
-        self.init_data = init_data
 
     @abstractmethod
     def process_events(self, events: List[Event]) -> None:

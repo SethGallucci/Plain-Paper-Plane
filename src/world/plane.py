@@ -18,7 +18,7 @@ class Plane(Entity, Texture, Velocity, PolygonCollider):
         **kwargs
     ):
         super().__init__(
-            surface=load("res/plane.png").convert_alpha(),
+            surface=load("res/plane.png"),
             anchor=Vector2(0, 0),
             render_height=render_height,
             position=position,
