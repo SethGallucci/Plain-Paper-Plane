@@ -1,5 +1,5 @@
 # Plain-Paper-Plane
-Pilot a paper plane as you nimbly soar through an obstacle course of crates! See how far you can fly before you inevitably crumple!
+Pilot a paper plane to nimbly soar through an obstacle course of crates or train a reinforcement learning agent to do it for you with the Flight School Gymnasium environment! See how far you can fly before you inevitably crumple!
 
 https://github.com/SethGallucci/Plain-Paper-Plane/assets/3813675/6c9c1014-45a9-45e2-a144-f3f573c36e05
 
