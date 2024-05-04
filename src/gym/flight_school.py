@@ -38,7 +38,6 @@ class FlightSchool(gym.Env):
         "render_fps":   60,
         "obs_types":    ["numeric", "rgb_array"]
     }
-    _window_size = (1280, 720)
 
     _crate_walls_per_obs: int = 2
 
